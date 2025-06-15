@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function(){
 		const taskText = task-input.value.trim();
 
 		if (taskText === ''){
+			alert('Please insert a task');
 
 		}else{
 			const li = document.createElement("li");
@@ -16,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 			const newBtn = document.createElement("button");
 			newBtn.textContent = "Remove";
-			newBtn.classList.add('remove.btn');
+			newBtn.classList.add('remove-btn');
 
 			newBtn.onClick = function() {
 				taskList.removeChild(li);
@@ -27,5 +28,16 @@ document.addEventListener("DOMContentLoaded", function(){
 			taskInput.value = '';
 		}
 
+		addButton.addEventListener('click', addTask);
+		taskInput.addEventListener('keypress', function(event) {
+			if(event.key === 'Enter'){
+				addTask();
+			}
+		});
+	}
+
+	document.addEventListener('DOMContentLoaded', function(){
+		addTask();
+	}
 	}
 });
